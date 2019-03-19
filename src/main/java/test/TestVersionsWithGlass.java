@@ -32,15 +32,8 @@ public class TestVersionsWithGlass {
     public void setup() {
         nodeUrl = "http://192.168.160.225:5577/wd/hub";
 
-        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        capabilities.setBrowserName("chrome");
-        capabilities.setPlatform(Platform.MAC);
-
-        try {
-            driver = new RemoteWebDriver(new URL(nodeUrl), capabilities);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        Utils.setup();
+        driver = RunEnvironment.getWebDriver();
 
         driver.manage().window().maximize();
         login = new Login(driver);
@@ -75,9 +68,8 @@ public class TestVersionsWithGlass {
 
     @AfterEach
     public void tearDown() throws InterruptedException {
-        driver.wait(5000);
-        driver.quit();
-        //Utils.tearDown();
+        //driver.wait(5000);
+        Utils.tearDown();
     }
 
 }

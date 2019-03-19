@@ -17,6 +17,14 @@ public class EnvironmentManagerWin {
         RunEnvironment.setWebDriver(driver);
     }
 
+    public static void initChromeWebDriverFromNode(String path) {
+
+        //System.setProperty("webdriver.chrome.driver", driverPath);
+        //driver = new ChromeDriver();
+
+        RunEnvironment.setWebDriver(driver);
+    }
+
     public static void initFireFoxWebDriver() {
         System.setProperty("webdriver.gecko.driver", driverPath );
         driver = new FirefoxDriver();

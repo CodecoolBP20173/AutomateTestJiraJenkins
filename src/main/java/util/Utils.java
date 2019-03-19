@@ -48,6 +48,24 @@ public class Utils {
         }
     }
 
+    public static void setupFromNode(String nodeUrl) {
+        if (OS.isFamilyMac()) {
+
+            if (System.getenv("myDriver").equals("chrome")) {
+                System.out.println("1*******************");
+                System.out.println("Launching chrome browser");
+                EnvironmentManagerMac.initChromeWebDriverFromNode(nodeUrl);
+                //driver.manage().window().maximize();
+            } else {
+                System.out.println("2*******************");
+                System.out.println("Launching firefox browser");
+                //EnvironmentManagerMac.initFireFoxWebDriver();
+                //driver.manage().window().maximize();
+            }
+
+        }
+    }
+
     public  static void tearDown() {
         if (OS.isFamilyMac()) {
             EnvironmentManagerMac.shutDownDriver();
