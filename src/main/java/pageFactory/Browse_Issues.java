@@ -9,10 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Browse_Issues {
-
-    WebDriver driver;
-    WebDriverWait wait;
+public class Browse_Issues extends PageObject {
 
     @FindBy(xpath = "//a[@title='Search for issues and view recent issues']")
     WebElement issuesFromMenuItem;
@@ -47,9 +44,7 @@ public class Browse_Issues {
     By deleteIssueLocator = By.xpath("//*[@id='delete-issue']/a");
 
     public Browse_Issues(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, 5);
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public void navigateToBrowseIssues(){

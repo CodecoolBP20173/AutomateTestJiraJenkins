@@ -2,6 +2,7 @@ package test;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import pageFactory.BrowseProjects;
@@ -34,26 +35,31 @@ public class BrowseProjectsTest {
         assertEquals(expectedPageTitle, browseProjects.getPageTitle());
     }
 
+    @Disabled
     @Test
     public void detailedPageOfProjectOfRequirements_test() {
         assertEquals(true, browseProjects.detailedPageOfProjectOfRequirements());
     }
 
+    @Disabled
     @Test
     public void navigateToRequiredProjectsReports_test() {
         assertEquals(true, browseProjects.navigateToRequiredProjectsReports());
     }
 
+    @Disabled
     @Test
     public void useSearchBarToFindAProject_test() throws InterruptedException {
         assertEquals(true, browseProjects.useSearchBarToFindAProject("testing"));
     }
 
-        @Test
+    @Disabled
+    @Test
     public void filterByProjectTypes_test() {
         assertEquals(true, browseProjects.filterByProjectTypes());
     }
 
+    @Disabled
     @Test
     public void filterByProjectCategories_test() {
         assertEquals(true, browseProjects.filterByProjectCategories());

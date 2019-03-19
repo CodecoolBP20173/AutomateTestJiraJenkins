@@ -31,6 +31,7 @@ public class TestCreateIssue {
 
     }
 
+    @Disabled
     @DisplayName("Test create issue with exist project")
     @Test
     public void testCreateAnIssueByButton() {
@@ -39,6 +40,7 @@ public class TestCreateIssue {
         Assertions.assertTrue(createIssue.isIssueCreateSuccessfully(), "Confirm issue is successfully created.");
     }
 
+    @Disabled
     @ParameterizedTest
     @CsvFileSource(resources = "/createIssue.csv", numLinesToSkip = 1)
     void createIssue(String project, String issueType, String summary) {
@@ -54,6 +56,7 @@ public class TestCreateIssue {
         deleteIssue(popupMessage.urlOfCreatedIssue);
     }
 
+    @Disabled
     void deleteIssue(String url) {
         driver.get(url);
         Browse_Issues browse = new Browse_Issues(driver);

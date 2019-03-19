@@ -9,10 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.openqa.selenium.By.xpath;
 
-public class CreateIssue {
-    WebDriver driver;
-    WebDriverWait wait;
-
+public class CreateIssue extends PageObject{
 
     @FindBy(id = "create_link")
     WebElement buttonCreateNavbar;
@@ -36,9 +33,7 @@ public class CreateIssue {
     WebElement popupCreateIssue;
 
     public CreateIssue(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, 10);
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public void createAnIssueByButton(String projectName, String issueType, String summary) {

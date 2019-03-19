@@ -7,20 +7,15 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ProjectSettingsPage {
-    private WebDriver driver;
+public class ProjectSettingsPage extends PageObject {
     private ComponentPage componentPage;
-    private WebDriverWait wait;
     private static final int TIMEOUT = 10;
 
     @FindBy(id = "administer_project_components")
     private WebElement componentsAdminMenuItem;
 
     public ProjectSettingsPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(this.driver, this);
-        this.wait = new WebDriverWait(this.driver, TIMEOUT);//, POLLING);
-
+        super(driver);
         componentPage = new ComponentPage(this.driver);
     }
 
