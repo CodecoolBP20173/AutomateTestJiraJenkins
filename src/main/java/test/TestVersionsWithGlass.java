@@ -1,14 +1,21 @@
+package test;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import pageFactory.Login;
 import pageFactory.VersionsWithGlassPage;
 import util.RunEnvironment;
 import util.Utils;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,19 +26,32 @@ public class TestVersionsWithGlass {
     WebDriver driver;
     Login login;
     VersionsWithGlassPage versionsWithGlassPage;
-
+    String nodeUrl;
 
     @BeforeEach
     public void setup() {
-        Utils.setup();
-        driver = RunEnvironment.getWebDriver();
-        driver.manage().window().maximize();
+        //Utils.setup();
+        //driver = RunEnvironment.getWebDriver();
+        nodeUrl = "http://192.168.160.225:5577/wd/hub";
+
+        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+        capabilities.setBrowserName("chrome");
+        capabilities.setPlatform(Platform.MAC);
+
+        try {
+            driver = new RemoteWebDriver(new URL(nodeUrl), capabilities);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        //driver.get(nodeUrl);
+        //driver.getTitle();
+        //driver.manage().window().maximize();
         login = new Login(driver);
         versionsWithGlassPage = new VersionsWithGlassPage(driver);
         login.login();
     }
 
-    @Disabled
+    //@Disabled
     @Test
     public void listVersions() {
         assertEquals(versionsWithGlassPage.getAllVersionsOfAProject().size(), versionsWithGlassPage.getAllVersionsInGlass().size());
@@ -49,6 +69,7 @@ public class TestVersionsWithGlass {
         }
     }
 
+    @Disabled
     @Test
     public void selectVersion() {
         System.out.println(versionsWithGlassPage.selectVersion());
@@ -58,7 +79,8 @@ public class TestVersionsWithGlass {
     @AfterEach
     public void tearDown() throws InterruptedException {
         driver.wait(5000);
-        Utils.tearDown();
+        driver.quit();
+        //Utils.tearDown();
     }
 
 }
