@@ -6,10 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class CreateIssueModal {
-
-    WebDriver driver;
-    WebDriverWait wait;
+public class CreateIssueModal extends PageObject {
     WebElement popup;
 
     @FindBy(id="create-issue-submit")
@@ -25,9 +22,7 @@ public class CreateIssueModal {
     private static By popupDivLocator = By.xpath("//*[@id='aui-flag-container']//descendant::div[contains(@class,'aui-message')]");
 
     public CreateIssueModal(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-        this.wait = new WebDriverWait(driver, 10);
+        super(driver);
     }
 
     public void setProject(String project){
