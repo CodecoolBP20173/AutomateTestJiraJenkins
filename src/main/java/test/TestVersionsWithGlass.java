@@ -30,8 +30,6 @@ public class TestVersionsWithGlass {
 
     @BeforeEach
     public void setup() {
-        //Utils.setup();
-        //driver = RunEnvironment.getWebDriver();
         nodeUrl = "http://192.168.160.225:5577/wd/hub";
 
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
@@ -43,9 +41,8 @@ public class TestVersionsWithGlass {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        //driver.get(nodeUrl);
-        //driver.getTitle();
-        //driver.manage().window().maximize();
+
+        driver.manage().window().maximize();
         login = new Login(driver);
         versionsWithGlassPage = new VersionsWithGlassPage(driver);
         login.login();
