@@ -26,7 +26,6 @@ public class TestCreateIssue {
         Utils.setupFromNode();
         driver = RunEnvironment.getWebDriver();
         login = new Login(driver);
-        driver.manage().window().maximize();
         login.login();
 
     }

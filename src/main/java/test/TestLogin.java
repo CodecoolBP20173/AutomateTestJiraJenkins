@@ -20,7 +20,6 @@ public class TestLogin {
         Utils.setupFromNode();
         driver = RunEnvironment.getWebDriver();
         login = new Login(driver);
-        driver.manage().window().maximize();
         System.err.println("SETUP");
     }
 

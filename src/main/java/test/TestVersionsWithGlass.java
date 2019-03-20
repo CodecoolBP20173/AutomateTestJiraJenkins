@@ -36,7 +36,6 @@ public class TestVersionsWithGlass {
         Utils.setupFromNode();
         driver = RunEnvironment.getWebDriver();
 
-        driver.manage().window().maximize();
         login = new Login(driver);
         versionsWithGlassPage = new VersionsWithGlassPage(driver);
         login.login();

@@ -1,5 +1,6 @@
 package util;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -19,7 +20,7 @@ public class EnvironmentManagerWin {
 
         System.setProperty("webdriver.chrome.driver", driverPath);
         driver = new ChromeDriver();
-
+        driver.manage().window().maximize();
         RunEnvironment.setWebDriver(driver);
     }
 
@@ -32,6 +33,7 @@ public class EnvironmentManagerWin {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+        driver.manage().window().setSize(new Dimension(1280, 720));
 
         RunEnvironment.setWebDriver(driver);
     }
@@ -39,7 +41,7 @@ public class EnvironmentManagerWin {
     public static void initFireFoxWebDriver() {
         System.setProperty("webdriver.gecko.driver", driverPath );
         driver = new FirefoxDriver();
-
+        driver.manage().window().maximize();
         RunEnvironment.setWebDriver(driver);
     }
 
@@ -52,7 +54,7 @@ public class EnvironmentManagerWin {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-
+        driver.manage().window().maximize();
         RunEnvironment.setWebDriver(driver);
     }
 

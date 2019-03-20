@@ -22,7 +22,6 @@ public class BrowseProjectsTest {
     public void setup() {
         Utils.setupFromNode();
         driver = RunEnvironment.getWebDriver();
-        driver.manage().window().maximize();
         login = new Login(driver);
         browseProjects = new BrowseProjects(driver);
         login.login();
