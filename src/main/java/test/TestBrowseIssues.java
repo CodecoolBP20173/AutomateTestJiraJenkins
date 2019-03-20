@@ -16,7 +16,7 @@ public class TestBrowseIssues {
 
     @BeforeEach
     public void setup(){
-        Utils.setup();
+        Utils.setupFromNode();
         driver = RunEnvironment.getWebDriver();
         driver.manage().window().maximize();
         login = new Login(driver);

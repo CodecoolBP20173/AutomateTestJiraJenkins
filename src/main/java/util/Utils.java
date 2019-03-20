@@ -28,7 +28,7 @@ public class Utils {
             }else {
                 System.out.println("2*******************");
                 System.out.println("Launching firefox browser");
-                EnvironmentManagerMac.initFireFoxWebDriver();
+//                EnvironmentManagerMac.initFireFoxWebDriver();
                 //driver.manage().window().maximize();
             }
 
@@ -43,6 +43,37 @@ public class Utils {
                 System.out.println("4*******************");
                 System.out.println("Launching firefox browser");
                 EnvironmentManagerWin.initFireFoxWebDriver();
+
+            }
+        }
+    }
+
+    public static void setupFromNode() {
+        if (OS.isFamilyMac()) {
+
+            if (System.getenv("myDriver").equals("chrome")) {
+                System.out.println("1*******************");
+                System.out.println("Launching chrome browser");
+                EnvironmentManagerMac.initChromeWebDriverFromNode();
+                //driver.manage().window().maximize();
+            } else {
+                System.out.println("2*******************");
+                System.out.println("Launching firefox browser");
+                EnvironmentManagerMac.initFireFoxWebDriverFromNode();
+                //driver.manage().window().maximize();
+            }
+
+        }else {
+
+            if (System.getenv("myDriver").equals("chrome")) {
+                System.out.println("3*******************");
+                System.out.println("Launching chrome browser");
+                EnvironmentManagerWin.initChromeWebDriverFromNode();
+
+            } else {
+                System.out.println("4*******************");
+                System.out.println("Launching firefox browser");
+                EnvironmentManagerWin.initFireFoxWebDriverFromNode();
 
             }
         }

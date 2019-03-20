@@ -17,7 +17,7 @@ public class TestLogin {
 
     @BeforeEach
     public void setup() {
-        Utils.setup();
+        Utils.setupFromNode();
         driver = RunEnvironment.getWebDriver();
         login = new Login(driver);
         driver.manage().window().maximize();
