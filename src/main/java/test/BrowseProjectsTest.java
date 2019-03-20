@@ -30,6 +30,7 @@ public class BrowseProjectsTest {
 
     @Test
     public void viewAllProjects_test() {
+        System.out.println("=== THIS IS MY BRANCH ===");
         String expectedPageTitle = "Browse projects - Jira";
         browseProjects.viewAllProjects();
         assertEquals(expectedPageTitle, browseProjects.getPageTitle());
