@@ -20,11 +20,14 @@ public class EnvironmentManagerMac {
 
         driver = new ChromeDriver();
         System.setProperty("webdriver.chrome.driver", driverPath);
-
         RunEnvironment.setWebDriver(driver);
     }
 
     public static void initChromeWebDriverFromNode(String nodeUrl) {
+        /*driver = new ChromeDriver();
+        System.setProperty("webdriver.chrome.driver", driverPath);
+        RunEnvironment.setWebDriver(driver);*/
+
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setBrowserName("chrome");
         capabilities.setPlatform(Platform.MAC);
@@ -35,7 +38,7 @@ public class EnvironmentManagerMac {
             e.printStackTrace();
         }
 
-        //RunEnvironment.setWebDriver(driver);
+        RunEnvironment.setWebDriver(driver);
     }
 
     public static void initFireFoxWebDriver() {
