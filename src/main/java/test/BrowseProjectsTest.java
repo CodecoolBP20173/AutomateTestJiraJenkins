@@ -30,7 +30,7 @@ public class BrowseProjectsTest {
 
     @Test
     public void viewAllProjects_test() {
-        System.out.println("===  ===");
+        System.out.println("######!!!!!4=== mukodj ===");
         String expectedPageTitle = "Browse projects - Jira";
         browseProjects.viewAllProjects();
         assertEquals(expectedPageTitle, browseProjects.getPageTitle());
