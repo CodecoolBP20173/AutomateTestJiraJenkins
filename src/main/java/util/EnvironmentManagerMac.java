@@ -14,6 +14,7 @@ public class EnvironmentManagerMac {
 
     private static String driverPath = System.getenv("driverPath");
     private static WebDriver driver;
+    private static String nodeUrl = System.getenv("nodeUrl");
 
 
     public static void initChromeWebDriver() {
@@ -23,7 +24,7 @@ public class EnvironmentManagerMac {
         RunEnvironment.setWebDriver(driver);
     }
 
-    public static void initChromeWebDriverFromNode(String nodeUrl) {
+    public static void initChromeWebDriverFromNode() {
         /*driver = new ChromeDriver();
         System.setProperty("webdriver.chrome.driver", driverPath);
         RunEnvironment.setWebDriver(driver);*/
@@ -41,11 +42,18 @@ public class EnvironmentManagerMac {
         RunEnvironment.setWebDriver(driver);
     }
 
-    public static void initFireFoxWebDriver() {
-        System.setProperty("webdriver.gecko.driver", driverPath);
-        driver = new FirefoxDriver();
+    public static void initFireFoxWebDriverFromNode() {
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+        capabilities.setBrowserName("firefox");
+        capabilities.setPlatform(Platform.MAC);
 
-        //RunEnvironment.setWebDriver(driver);
+        try {
+            driver = new RemoteWebDriver(new URL(nodeUrl), capabilities);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        RunEnvironment.setWebDriver(driver);
     }
 
     public static void shutDownDriver() {

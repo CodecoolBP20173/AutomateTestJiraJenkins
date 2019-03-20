@@ -31,9 +31,9 @@ public class TestVersionsWithGlass {
     @BeforeEach
     public void setup() {
         //nodeUrl = "http://192.168.160.225:5577/wd/hub";
-        nodeUrl = "http://localhost:4444/wd/hub";
+//        nodeUrl = "http://localhost:4444/wd/hub";
 
-        Utils.setupFromNode(nodeUrl);
+        Utils.setupFromNode();
         driver = RunEnvironment.getWebDriver();
 
         driver.manage().window().maximize();
