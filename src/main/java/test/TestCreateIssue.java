@@ -3,6 +3,7 @@ package test;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import pageFactory.CreateIssue;
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,12 +27,11 @@ public class TestCreateIssue {
         Utils.setupFromNode();
         driver = RunEnvironment.getWebDriver();
         login = new Login(driver);
-        driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(1280, 720));
         login.login();
 
     }
 
-    @Disabled
     @DisplayName("Test create issue with exist project")
     @Test
     public void testCreateAnIssueByButton() {
@@ -40,7 +40,6 @@ public class TestCreateIssue {
         Assertions.assertTrue(createIssue.isIssueCreateSuccessfully(), "Confirm issue is successfully created.");
     }
 
-    @Disabled
     @ParameterizedTest
     @CsvFileSource(resources = "/createIssue.csv", numLinesToSkip = 1)
     void createIssue(String project, String issueType, String summary) {
@@ -56,7 +55,7 @@ public class TestCreateIssue {
         deleteIssue(popupMessage.urlOfCreatedIssue);
     }
 
-    @Disabled
+
     void deleteIssue(String url) {
         driver.get(url);
         Browse_Issues browse = new Browse_Issues(driver);

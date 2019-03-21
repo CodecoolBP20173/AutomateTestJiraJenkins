@@ -26,7 +26,6 @@ public class TestLogin {
         System.err.println("SETUP");
     }
 
-    @Disabled
     @DisplayName("Test login with wrong and empty details")
     @ParameterizedTest
     @CsvFileSource(resources = "/login/data-source-login.csv")
@@ -36,7 +35,6 @@ public class TestLogin {
         Assertions.assertFalse(login.isLoggedIn(), "Confirm you are not logged in");
     }
 
-    //@Disabled
     @DisplayName("Successful login test")
     @Test
     public void testSuccessfulLoginAndLogout() {

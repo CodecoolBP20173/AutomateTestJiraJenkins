@@ -26,7 +26,6 @@ public class TestBrowseIssues {
         login.login();
     }
 
-    //@Disabled
     @DisplayName("Navigate to Browse Issues")
     @Test
     public void navigateToBrowseIssues() {
@@ -41,7 +40,6 @@ public class TestBrowseIssues {
         Assertions.assertTrue(browseIssues.openIssuesOfTestProject("Toucan").isDisplayed(), "No such project available");
     }
 
-    //@Disabled
     @DisplayName("Validate that Toucan project has 3 issues at least")
     @Test
     public void checkToucanProjectIssues(){
@@ -50,14 +48,12 @@ public class TestBrowseIssues {
         Assertions.assertTrue(browseIssues.isMinimumNumberOfIssuesArePresent(3), "Minimum issue number not reached");
     }
 
-    //@Disabled
     @DisplayName("Validate that Coala project is available")
     @Test
     public void checkCoalaProjectAvailability() {
         Assertions.assertTrue(browseIssues.openIssuesOfTestProject("Coala").isDisplayed(), "No such project available");
     }
 
-    //@Disabled
     @DisplayName("Validate that Coala project has 3 issues at least")
     @Test
     public void checkCoalaProjectIssues(){
@@ -66,14 +62,12 @@ public class TestBrowseIssues {
         Assertions.assertTrue(browseIssues.isMinimumNumberOfIssuesArePresent(3), "Minimum issue number not reached");
     }
 
-    //@Disabled
     @DisplayName("Validate that Jeti project is available")
     @Test
     public void checkJetiProjectAvailability() {
         Assertions.assertTrue(browseIssues.openIssuesOfTestProject("Jeti").isDisplayed(), "No such project available");
     }
 
-    //@Disabled
     @DisplayName("Validate that Jeti project has 3 issues at least")
     @Test
     public void checkJetiProjectIssues(){
@@ -81,10 +75,6 @@ public class TestBrowseIssues {
         System.out.println("Number of issues for project: " + browseIssues.getNumbersOfIssues());
         Assertions.assertTrue(browseIssues.isMinimumNumberOfIssuesArePresent(3), "Minimum issue number not reached");
     }
-
-
-
-
 
     @AfterEach
     public void tearDown(){

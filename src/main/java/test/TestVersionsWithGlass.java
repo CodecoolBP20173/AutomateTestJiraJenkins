@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -36,19 +37,17 @@ public class TestVersionsWithGlass {
         Utils.setupFromNode();
         driver = RunEnvironment.getWebDriver();
 
-        driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(1280, 720));
         login = new Login(driver);
         versionsWithGlassPage = new VersionsWithGlassPage(driver);
         login.login();
     }
 
-    //@Disabled
     @Test
     public void listVersions() {
         assertEquals(versionsWithGlassPage.getAllVersionsOfAProject().size(), versionsWithGlassPage.getAllVersionsInGlass().size());
     }
 
-    @Disabled
     @Test
     public void createdVersionExists() {
         String newlyCreatedVersionNumber = versionsWithGlassPage.createNewVersion();
@@ -60,7 +59,6 @@ public class TestVersionsWithGlass {
         }
     }
 
-    @Disabled
     @Test
     public void selectVersion() {
         System.out.println(versionsWithGlassPage.selectVersion());

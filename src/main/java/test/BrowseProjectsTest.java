@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import pageFactory.BrowseProjects;
 import pageFactory.Login;
@@ -22,7 +23,7 @@ public class BrowseProjectsTest {
     public void setup() {
         Utils.setupFromNode();
         driver = RunEnvironment.getWebDriver();
-        driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(1280, 720));
         login = new Login(driver);
         browseProjects = new BrowseProjects(driver);
         login.login();
@@ -35,31 +36,26 @@ public class BrowseProjectsTest {
         assertEquals(expectedPageTitle, browseProjects.getPageTitle());
     }
 
-    @Disabled
     @Test
     public void detailedPageOfProjectOfRequirements_test() {
         assertEquals(true, browseProjects.detailedPageOfProjectOfRequirements());
     }
 
-    @Disabled
     @Test
     public void navigateToRequiredProjectsReports_test() {
         assertEquals(true, browseProjects.navigateToRequiredProjectsReports());
     }
 
-    @Disabled
     @Test
     public void useSearchBarToFindAProject_test() throws InterruptedException {
         assertEquals(true, browseProjects.useSearchBarToFindAProject("testing"));
     }
 
-    @Disabled
     @Test
     public void filterByProjectTypes_test() {
         assertEquals(true, browseProjects.filterByProjectTypes());
     }
 
-    @Disabled
     @Test
     public void filterByProjectCategories_test() {
         assertEquals(true, browseProjects.filterByProjectCategories());
