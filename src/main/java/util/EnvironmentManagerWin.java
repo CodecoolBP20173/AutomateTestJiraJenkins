@@ -1,8 +1,10 @@
 package util;
 
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -26,6 +28,7 @@ public class EnvironmentManagerWin {
     public static void initChromeWebDriverFromNode() {
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setBrowserName("chrome");
+        capabilities.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
 
         try {
             driver = new RemoteWebDriver(new URL(nodeUrl), capabilities);

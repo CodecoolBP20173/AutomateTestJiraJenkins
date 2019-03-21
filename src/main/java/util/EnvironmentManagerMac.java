@@ -1,9 +1,11 @@
 package util;
 
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -32,6 +34,7 @@ public class EnvironmentManagerMac {
 
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setBrowserName("chrome");
+        capabilities.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
         //capabilities.setPlatform(Platform.MAC);
         System.err.println(nodeUrl);
 
