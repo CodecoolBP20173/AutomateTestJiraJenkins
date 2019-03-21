@@ -20,7 +20,7 @@ public class EnvironmentManagerWin {
 
         System.setProperty("webdriver.chrome.driver", driverPath);
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        driver.manage().window().setSize(new Dimension(1280, 720));
         RunEnvironment.setWebDriver(driver);
     }
 
@@ -31,9 +31,8 @@ public class EnvironmentManagerWin {
         try {
             driver = new RemoteWebDriver(new URL(nodeUrl), capabilities);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            System.out.println("malformed URL :C");
         }
-        driver.manage().window().setSize(new Dimension(1280, 720));
 
         RunEnvironment.setWebDriver(driver);
     }
@@ -41,20 +40,20 @@ public class EnvironmentManagerWin {
     public static void initFireFoxWebDriver() {
         System.setProperty("webdriver.gecko.driver", driverPath );
         driver = new FirefoxDriver();
-        driver.manage().window().maximize();
+
         RunEnvironment.setWebDriver(driver);
     }
 
     public static void initFireFoxWebDriverFromNode() {
         DesiredCapabilities capabilities = DesiredCapabilities.firefox();
         capabilities.setBrowserName("firefox");
-
+        System.out.println(">>>>> " + nodeUrl);
         try {
             driver = new RemoteWebDriver(new URL(nodeUrl), capabilities);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            System.out.println("malformed URL :C");
         }
-        driver.manage().window().maximize();
+
         RunEnvironment.setWebDriver(driver);
     }
 
