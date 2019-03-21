@@ -12,8 +12,8 @@ import java.net.URL;
 public class EnvironmentManagerWin {
     private static String driverPath = System.getenv("driverPath");
     private static WebDriver driver;
-    private static String nodeUrl = System.getenv("nodeUrl");
-
+    //private static String nodeUrl = System.getenv("nodeUrl");
+    private static String nodeUrl = System.getProperty("nodeUrl");
 
     public static void initChromeWebDriver() {
 

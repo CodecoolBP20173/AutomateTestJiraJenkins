@@ -14,7 +14,8 @@ public class EnvironmentManagerMac {
 
     private static String driverPath = System.getenv("driverPath");
     private static WebDriver driver;
-    private static String nodeUrl = System.getenv("nodeUrl");
+    //private static String nodeUrl = System.getenv("nodeUrl");
+    private static String nodeUrl = System.getProperty("nodeUrl");
 
 
     public static void initChromeWebDriver() {
@@ -31,7 +32,8 @@ public class EnvironmentManagerMac {
 
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setBrowserName("chrome");
-        capabilities.setPlatform(Platform.MAC);
+        //capabilities.setPlatform(Platform.MAC);
+        System.err.println(nodeUrl);
 
         try {
             driver = new RemoteWebDriver(new URL(nodeUrl), capabilities);
